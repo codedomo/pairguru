@@ -50,6 +50,11 @@ describe TitleBracketsValidator do
     it_behaves_like "has invalid title"
   end
 
+  context "with empty brackets with whitespaces" do
+    let(:title) { "The Fellowship of the Ring ( )" }
+    it_behaves_like "has invalid title"
+  end
+
   context "with brackets in wrong order" do
     let(:title) { "The Fellowship of the )Ring(" }
     it_behaves_like "has invalid title"
