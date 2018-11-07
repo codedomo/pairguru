@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :movie
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validates :user_id, uniqueness: { scope: :movie_id, message: 'may only write one comment per movie.' }
   validates :user_id, :movie_id, :content, presence: true
