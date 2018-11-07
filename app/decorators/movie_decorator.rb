@@ -6,4 +6,8 @@ class MovieDecorator < Draper::Decorator
       %w[abstract nightlife transport].sample +
       "?a=" + SecureRandom.uuid
   end
+
+  def comment_placeholder
+    'You can leave only one comment to the movie. You can create another only if you delete previous one.' if h.already_posted?(object)
+  end
 end
