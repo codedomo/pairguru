@@ -16,6 +16,10 @@ class Movie < ApplicationRecord
   include ActiveModel::Validations
 
   belongs_to :genre
-  validates_with TitleBracketsValidator
+  has_many :comments
 
+  validates_with TitleBracketsValidator
+  validates_associated :comments
+
+  accepts_nested_attributes_for :comments, allow_destroy: true
 end

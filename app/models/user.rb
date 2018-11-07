@@ -24,4 +24,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
+
+  has_many :comments
+
+  def image
+    "users/jd#{(1..5).to_a.sample}.png"
+  end
+
+  def already_posted?(movie)
+    comments.where(user: self, movie: movie).exists?
+  end
 end
