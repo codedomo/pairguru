@@ -1,4 +1,5 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import 'movies/show';
+@import 'shared/common';
 @import 'comments/show';
+@import 'commenters/index';
