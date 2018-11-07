@@ -3,3 +3,33 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+
+  = form_for [@movie, Comment.new], html: { class: 'form-group' } do |f|
+    - if @comment && @comment.errors.any?
+      .alert.alert-danger
+        - @comment.errors.full_messages.each do |msg|
+          %p= msg
+    = f.label :content, 'Write comment:'
+    = f.text_area :content, class: 'form-control', id: 'comment', rows: 4, disabled: already_posted?(@movie), placeholder: @movie.decorate.comment_placeholder
+    .mt10
+      = f.submit 'Post comment', class: 'btn btn-primary', disabled: already_posted?(@movie)
+  %hr
+
+.h3 Comments
+- @movie.comments.each do |comment|
+  - next if comment.new_record?
+  .media
+    .media-left
+      = image_tag comment.user_image, class: 'media-object thumb'
+    .media-body
+      %h4.media-heading
+        = comment.user_name
+        %small
+          %i
+            Posted on
+            = comment.decorate.formatted_creation_date
+            = link_to 'Delete', movie_comment_path(@movie, comment), method: :delete, data: { confirm: 'Are you sure?' } if owner?(comment)
+      %p= comment.content
+      
+- if @movie.comments.empty?
+  %p No comments yet
