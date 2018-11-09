@@ -16,7 +16,7 @@
   %hr
 
 .h3 Comments
-- @movie.comments.each do |comment|
+- @movie.comments.order(created_at: :desc).each do |comment|
   - next if comment.new_record?
   .media
     .media-left
@@ -30,6 +30,6 @@
             = comment.decorate.formatted_creation_date
             = link_to 'Delete', movie_comment_path(@movie, comment), method: :delete, data: { confirm: 'Are you sure?' } if owner?(comment)
       %p= comment.content
-      
+
 - if @movie.comments.empty?
   %p No comments yet
