@@ -2,11 +2,14 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:send_info]
 
   def index
-    @movies = Movie.includes(:genre).all.decorate
+    @movies = Rails.cache.fetch("all_movies", expires_in: 1.hour) do
+      Movie.includes(:genre).all.decorate.to_a
+    end
   end
 
+
   def show
-    @movie = Movie.includes(:comments).find(params[:id])
+    @movie = Movie.includes(:comments).find(params[:id]).decorate
   end
 
   def send_info

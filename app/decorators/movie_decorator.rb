@@ -10,4 +10,8 @@ class MovieDecorator < Draper::Decorator
   def comment_placeholder
     'You can leave only one comment to the movie. You can create another only if you delete previous one.' if h.already_posted?(object)
   end
+
+  def rating_star
+    h.content_tag(:span, nil, class: 'fa fa-star checked')
+  end
 end
