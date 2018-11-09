@@ -16,6 +16,7 @@ gem "uglifier"
 gem "bootsnap", ">= 1.1.0", require: false
 
 gem 'sidekiq'
+gem 'json_api_client', git: 'https://github.com/JsonApiClient/json_api_client', branch: 'master'
 
 group :development do
   gem "better_errors"
