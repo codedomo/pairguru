@@ -16,6 +16,9 @@ gem "uglifier"
 gem "bootsnap", ">= 1.1.0", require: false
 
 gem 'sidekiq'
+gem "grape"
+gem 'grape-active_model_serializers'
+
 
 group :development do
   gem "better_errors"
