@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     end
   end
   resources :commenters, only: :index
+
+  mount API::Public::Core, at: "/"
 end
