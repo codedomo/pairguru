@@ -6,6 +6,9 @@ module API
           resource :movies do
             mount Index
           end
+          resource :movie do
+            mount Show
+          end
         end
       end
     end
