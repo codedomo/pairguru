@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe MovieSerializer do
+describe V1::MovieSerializer do
   let(:movie) { create(:movie) }
 
   let(:result_hash) do
