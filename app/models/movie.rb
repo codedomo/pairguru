@@ -15,7 +15,7 @@
 class Movie < ApplicationRecord
   include ActiveModel::Validations
 
-  belongs_to :genre
+  belongs_to :genre, counter_cache: true
   has_many :comments
 
   validates_with TitleBracketsValidator
