@@ -17,7 +17,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 
 gem 'sidekiq'
 gem "grape"
-gem 'grape-active_model_serializers'
+gem 'grape-active_model_serializers', git: "git@github.com:ruby-grape/grape-active_model_serializers.git", branch: 'master'
 
 
 group :development do
