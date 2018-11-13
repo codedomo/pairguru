@@ -1,9 +1,8 @@
 require 'rails_helper'
-# require 'active_model'
 
-describe API::Public::V1::Movies::Show, type: :request do
-  describe 'GET /api/public/v1/movie/' do
-    subject { get '/api/public/v1/movie', params: params }
+describe API::Public::V2::Movies::Show, type: :request do
+  describe 'GET /api/public/v2/movie/' do
+    subject { get '/api/public/v2/movie', params: params }
 
     context 'when valid params' do
       let!(:movie) { create(:movie) }
